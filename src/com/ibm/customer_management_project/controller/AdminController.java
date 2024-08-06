@@ -33,7 +33,7 @@ public class AdminController {
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1: {
-
+				
 				try {
 					System.out.println("Enter the details of admin");
 					System.out.println("Enter the Admin Id: ");
@@ -61,9 +61,9 @@ public class AdminController {
 				try {
 					System.out.println("Enter the Admin id to update admin");
 					int id = sc.nextInt();
-					System.out.println("Enter new Admin Name: ");
+					System.out.println("Enter new Admin Name to Update: ");
 					String name = sc.next();
-					System.out.println("Enter new Admin Email: ");
+					System.out.println("Enter new Admin Email to Update: ");
 					String email = sc.next();
 
 					int a = admin_dao.upadateAdminByIdDao(id, name, email);
@@ -98,6 +98,7 @@ public class AdminController {
 			case 4: {
 
 				try {
+					System.out.println("Enter the Admin Name and Email to Login");
 					System.out.println("Enter the Admin name :");
 					String name = sc.next();
 					System.out.println("Enter the Admin email: ");
@@ -106,6 +107,7 @@ public class AdminController {
 					if (admin.getName().equalsIgnoreCase(name) && admin != null) {
 						if (admin.getEmail().equalsIgnoreCase(email)) {
 							System.out.println(admin.getName() + " Logged in Succesfully:) ");
+							System.out.println();
 
 							while (true) {
 
@@ -117,6 +119,7 @@ public class AdminController {
 									try {
 
 										System.out.println("Enter Customer details to Add a Customer: ");
+										System.out.println();
 										System.out.println("Enter Customer id: ");
 										int cid = sc.nextInt();
 										System.out.println("Enter Customer Name: ");
@@ -160,22 +163,21 @@ public class AdminController {
 									try {
 										System.out.println("Enter Customer id to Update Customer Info");
 										int cid = sc.nextInt();
-										System.out.println("Enter Csutomer new Name: ");
+										System.out.println("Enter new Customer Name to Update: ");
 										String cname = sc.next();
-										System.out.println("Enter Customer new Email");
+										System.out.println("Enter new Customer Email to Update");
 										String cemail = sc.next();
-										System.out.println("Enter Customer new Phone Number");
+										System.out.println("Enter new Customer Phone Number to Update");
 										long clong = sc.nextLong();
 
 										int a = admin_dao.updateCustomerByAdminDao(cid, cname, cemail, clong);
 										if (a != 0) {
-											System.out.println("Data Update Successfully :)");
+											System.out.println("Customer Data Update Successfully :)");
 										} else {
-											System.out.println(
-													"Given id is not found. Data Update Failed :( try again...");
+											System.out.println("Given id is not found. Data Update Failed :( try again...");
 										}
 									} catch (Exception e) {
-										System.out.println("Please Enter valid Data.. try again...");
+										System.out.println("Please Enter valid Data... try again...");
 									}
 									break;
 								}
@@ -207,6 +209,8 @@ public class AdminController {
 			case 5: {
 
 				try {
+					System.out.println("Enter Customer name and email to login :-)");
+					System.out.println();
 					System.out.println("Enter the Customer name :");
 					String name = sc.next();
 					System.out.println("Enter the Customer email: ");
@@ -231,7 +235,7 @@ public class AdminController {
 										String pname = sc.next();
 										System.out.println("Enter Product Price: ");
 										double pprice = sc.nextDouble();
-										System.out.println("Enter Product Avaliable: ");
+										System.out.println("Enter Product Availability: ");
 										String avaliable = sc.next();
 										Product product = new Product(pid, pname, pprice, avaliable, customer.getId());
 										Product product2 = product_service.getProductService(product);
@@ -251,17 +255,17 @@ public class AdminController {
 									try {
 										System.out.println("Enter Product id to Update product Info");
 										int pid = sc.nextInt();
-										System.out.println("Enter Product new Name: ");
+										System.out.println("Enter new Product Name to Update: ");
 										String pname = sc.next();
-										System.out.println("Enter Product new Price");
+										System.out.println("Enter new Product Price to Update");
 										double pprice = sc.nextDouble();
-										System.out.println("Enter Product avaliable(yes/no)");
+										System.out.println("Enter new Product availability(yes/no) to Update");
 										String avaliable = sc.next();
 
 										int a = customer_dao.updateProductByCustomer(pid, pname, pprice, avaliable,
 												customer.getId());
 										if (a != 0) {
-											System.out.println("Data Update Successfully :)");
+											System.out.println("Product Data Update Successfully :)");
 										} else {
 											System.out.println(
 													"Given id is not found. Data Updation Failed :( try again...");
@@ -294,10 +298,11 @@ public class AdminController {
 								case 4: {
 									try {
 
-										System.out.println("Enter Product details to update a Product price: ");
-										System.out.println("Enter Product id: ");
+										System.out.println("Enter Product id to update the Product price: ");
+										System.out.println();
+										System.out.println("Enter PRoduct Id");
 										int pid = sc.nextInt();
-										System.out.println("Enter Product new Price: ");
+										System.out.println("Enter new Product Price to Upadate: ");
 										double pprice = sc.nextDouble();
 										int a = customer_dao.updateProductPriceByCustomer(pid, pprice,
 												customer.getId());
@@ -318,18 +323,18 @@ public class AdminController {
 								case 5: {
 									try {
 
-										System.out.println("Enter Product details to update a Product avaliable: ");
+										System.out.println("Enter Product Id to update Product avaliability: ");
 										System.out.println("Enter Product id: ");
 										int pid = sc.nextInt();
-										System.out.println("Enter Product avaliable to update: ");
+										System.out.println("Enter Product availability (yes/no) to update: ");
 										String avaliable = sc.next();
 										int a = customer_dao.updateProductavaliableByCustomer(pid, avaliable,
 												customer.getId());
 										if (a != 0) {
-											System.out.println("Produt avaliable is updated Successfully..");
+											System.out.println("Produt availability is updated Successfully..");
 										} else {
 											System.out.println(
-													"Given product id is not found \nor \nyou are not allowed to change the product avaliability. \nplease try again...");
+													"Given product id is not found \nor \nyou are not allowed to change the product availability. \nplease try again...");
 										}
 
 									} catch (Exception e) {
